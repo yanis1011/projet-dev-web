@@ -121,14 +121,13 @@ function displayQuestion(index) {
 
 let selectedAnswers = [];
 
-function selectAnswer(questionId, answerId) {
-  selectedAnswers.push(`Q${questionId}_A${answerId}...`);
+function selectAnswer(qId, aId) {
+  selectedAnswers.push(`Q${qId}_${aId}`);
 
   if (selectedAnswers.length === forms.length) {
-    const answerString = selectedAnswers.join('');
-    const fileSuffix = (lang === "fr") ? ".fr.html" : ".html";
+    const answerString = selectedAnswers.join('...') + '...';
+    const fileSuffix = ".fr.html";
     const targetFile = `${answerString}${fileSuffix}`;
-
     checkFileExists(targetFile).then((exists) => {
       if (exists) {
         window.location.href = targetFile;
@@ -143,36 +142,39 @@ function selectAnswer(questionId, answerId) {
   }
 }
 
-function brutforce() {
-  let possibleAnswers = generatePossibleLinks(forms);
 
-  function testAnswer(index) {
-    if (index >= possibleAnswers.length) {
-      console.log("Toutes les combinaisons ont été testées, aucune réponse valide trouvée.");
-      window.location.href = `main.fr.html`;
+function generateAllAnswerCombos(forms) {
+  let combos = [""];
+  forms.forEach((question) => {
+    const newCombos = [];
+    question.answers.forEach((answer) => {
+      combos.forEach((prefix) => {
+        newCombos.push(`${prefix}Q${question.questionId}_A${answer.answerId}...`);
+      });
+    });
+    combos = newCombos;
+  });
+  return combos.map(c => c.endsWith("...") ? c.slice(0, -3) : c);
+}
+
+async function brutforce() {
+  const combos = generateAllAnswerCombos(forms);
+
+  for (let i = 0; i < combos.length; i++) {
+    const steps = combos[i].split('...');
+    const answerString = combos[i] + '...';
+    const fileSuffix = ".fr.html";
+    const targetFile = `${answerString}${fileSuffix}`;
+    const exists = await checkFileExists(targetFile);
+    if (exists) {
+      window.location.href = targetFile;
       return;
     }
-
-    const selectedAnswers = possibleAnswers[index];
-    console.log(`${selectedAnswers}.html`);
-    checkFileExists(`${selectedAnswers}.html`)
-      .then((exists) => {
-        if (exists) {
-          console.log("Réponses correctes trouvées :", selectedAnswers);
-          window.location.href = `${selectedAnswers}.html`;
-        } else {
-          console.log("Réponses incorrectes, tentative suivante :", selectedAnswers);
-          testAnswer(index + 1);
-        }
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la vérification du fichier :", error);
-        testAnswer(index + 1);
-      });
   }
-
-  testAnswer(0);
+  alert("Aucune combinaison correcte trouvée.");
 }
+
+
 
 function generatePossibleLinks(forms) {
   let possibleLinks = [""];

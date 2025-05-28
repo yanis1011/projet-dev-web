@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>resume website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style/custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        plugins: [window.daisyui],
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+  </head>
+  <body>
+    <div id="a4-page">
+      <div class="content-container" style="height: 24%;">
+        <div class="content-inside">
+          <div id="pfp-container">
+            <div id="pfp"></div>
+            <p id="pfp-text">DENNIS<br>RITCHIE</p>
+          </div>
+          <div class="white-bar" style="width: 205px; height: 4px; bottom: 24px; left: 150px; margin-top: -20px;"></div>
+        </div>
+      </div>
+      <div class="content-container" style="height: 58%;">
+        <div class="content-inside">
+          <div class="container-resume-parts">
+            <p style="margin-left: 4px;">Education</p>
+            <div class="white-bar" style="width: 340px; height: 4px; bottom: -6px; left: 5px; margin-top: -20px;"></div>
+            <p></p>
+            <a href="https://www.harvard.edu/" target="_blank" style="text-decoration: none; color: white; font-size: 18px; margin-left: 4px;">Harvard,</a>
+            <p style="font-size: 16px; margin-left: 4px;">Master en science</p>
+            <a href="https://www.harvard.edu/" target="_blank" style="text-decoration: none; color: white; font-size: 18px; margin-left: 4px;">Harvard,</a>
+            <p style="font-size: 16px; margin-left: 4px;">Doctorat</p>
+          </div>
+          <div class="container-resume-parts" style="top: 400px;">
+            <p style="margin-left: 4px;">Calculatrice</p>
+            <div class="white-bar" style="width: 340px; height: 4px; bottom: -6px; left: 5px; margin-top: -20px;"></div>
+            <div id="calculator" style="margin-top: 20px; background-color: white; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 280px; margin-left: auto; margin-right: auto;">
+              <input type="text" id="calc-display" disabled style="width: 100%; height: 40px; font-size: 20px; text-align: right; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; padding: 4px;" />
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                <button onclick="calcInput('7')" class="btn btn-sm btn-outline">7</button>
+                <button onclick="calcInput('8')" class="btn btn-sm btn-outline">8</button>
+                <button onclick="calcInput('9')" class="btn btn-sm btn-outline">9</button>
+                <button onclick="calcInput('/')" class="btn btn-sm btn-accent">÷</button>
+                <button onclick="calcInput('4')" class="btn btn-sm btn-outline">4</button>
+                <button onclick="calcInput('5')" class="btn btn-sm btn-outline">5</button>
+                <button onclick="calcInput('6')" class="btn btn-sm btn-outline">6</button>
+                <button onclick="calcInput('*')" class="btn btn-sm btn-accent">×</button>
+                <button onclick="calcInput('1')" class="btn btn-sm btn-outline">1</button>
+                <button onclick="calcInput('2')" class="btn btn-sm btn-outline">2</button>
+                <button onclick="calcInput('3')" class="btn btn-sm btn-outline">3</button>
+                <button onclick="calcInput('-')" class="btn btn-sm btn-accent">−</button>
+                <button onclick="calcInput('0')" class="btn btn-sm btn-outline">0</button>
+                <button onclick="calcInput('.')" class="btn btn-sm btn-outline">.</button>
+                <button onclick="calculateResult()" class="btn btn-sm btn-success">=</button>
+                <button onclick="calcInput('+')" class="btn btn-sm btn-accent">+</button>
+                <button onclick="clearDisplay()" class="btn btn-sm btn-error" style="grid-column: span 4;">C</button>
+              </div>
+            </div>
+          </div>  
+          <div class="container-resume-parts" style="top: -80px; left: 422px; height: 360px;">
+            <p style="margin-left: 4px;">Skills</p>
+            <div class="white-bar" style="width: 340px; height: 4px; bottom: -6px; left: 5px; margin-top: -20px;"></div>
+            <div class="skill"><div class="skill-name">Python</div><div class="progress" style="height: 2ch;"><div class="progress-bar-1" style="width: 99%;"></div></div></div>
+            <div class="skill"><div class="skill-name">C</div><div class="progress" style="height: 2ch;"><div class="progress-bar-1" style="width: 99%;"></div></div></div>
+            <div class="skill"><div class="skill-name">HTML, CSS, JS</div><div class="progress" style="height: 2ch;"><div class="progress-bar-1" style="width: 70%;"></div></div></div>
+            <div class="white-bar" style="width: 340px; height: 4px; left: 5px; margin-top: 10px;"></div>
+            <div class="skill"><div class="skill-name">Anglais</div><div class="progress" style="height: 2ch;"><div class="progress-bar-1" style="width: 100%;"></div></div></div>
+            <div class="skill"><div class="skill-name">Français</div><div class="progress" style="height: 2ch;"><div class="progress-bar-1" style="width: 10%;"></div></div></div>
+            <div class="white-bar" style="width: 340px; height: 4px; bottom: -30px; left: 5px; margin-top: -20px;"></div>
+          </div>
+          <div class="container-resume-parts" style="top: 350px; left: 422px;">
+            <p style="margin-left: 4px;">Experiences</p>
+            <div class="white-bar" style="width: 340px; height: 4px; bottom: -6px; left: 5px; margin-top: -20px;"></div>
+            <p></p>
+            <a href="https://www.nokia.com/bell-labs/" target="_blank" style="text-decoration: none; color: white; font-size: 18px; margin-left: 4px;">Laboratoire BELL,</a>
+            <p style="font-size: 16px; margin-left: 4px;">Massachusetts, USA [3 ans]</p>
+            <p></p>
+            <p style="color: white; font-size: 18px; margin-left: 4px;">Ecriture d'un livre</p>
+            <p style="font-size: 16px; margin-left: 4px;">The Design of Switching Circuits [en 1972]</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-container" style="height: 18%;">
+        <div class="content-inside">
+          <p style="color: #fff; font-size: 12px; margin-left: -12px; margin-top: 0; margin-bottom: 0; position: absolute; top: 88%;">Copyright Yanis DESNE, 2025</p>
+          <p style="position: relative; left:67%; margin-bottom: 10px;">Me contacter</p>
+          <div class="white-bar" style="width: 200px; height: 4px; bottom: -12px; left: 64%; margin-top: -20px;"></div>
+          <button type="button" class="button-hover btn btn-outline-primary" style="border-color: #fff; color: #fff; position: relative; bottom: -18px; left: 69.5%; margin-top: 0; font-size: 16px;" onclick="changeURL('/forms.fr.html')">Me contacter</button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
